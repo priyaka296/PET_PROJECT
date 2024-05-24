@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% block 'main' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Pet-Club</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'assets/images/favicon.ico' %}">
+
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Flaticon Font -->
+    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+      <!-- Carousel Start -->
+      <div class="container-fluid p-0">
+        <div id="header-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="w-100" src="{% static 'assets/images/Banner_หลัก_05_1.jpg' %}" alt="Image">
+
+
+                   
+
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h3 class="text-white mb-3 d-none d-sm-block"></h3>
+                            <h1 class="display-3 text-white mb-3"></h1>
+                            <h5 class="text-white mb-3 d-none d-sm-block"></h5>
+                            <a href="/Booking/" class="btn btn-lg btn-info mt-3 mt-md-4 px-4">Book Now</a>
+                            <a href="/services/" class="btn btn-lg btn-dark mt-3 mt-md-4 px-4">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                  <img class="w-100" src="{% static 'assets/images/image-asset.jpeg' %}" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h3 class="text-white mb-3 d-none d-sm-block">Best Pet Services</h3>
+                            <h1 class="display-3 text-white mb-3">Pet Spa & Grooming</h1>
+                            <h5 class="text-white mb-3 d-none d-sm-block">Duo nonumy et dolor tempor no et. Diam sit diam sit diam erat</h5>
+                            <a href="/Booking/" class="btn btn-lg btn-info mt-3 mt-md-4 px-4">Book Now</a>
+                            <a href="/services/" class="btn btn-lg btn-dark mt-3 mt-md-4 px-4">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                <div class="btn btn-primary rounded" style="width: 45px; height: 45px;">
+                    <span class="carousel-control-prev-icon mb-n2"></span>
+                </div>
+            </a>
+            <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                <div class="btn btn-primary rounded" style="width: 45px; height: 45px;">
+                    <span class="carousel-control-next-icon mb-n2"></span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+ 
+
+  <!--col 2/cards section-->
+
+
+    <h3>Pet</h3>
+    <!--Row 1-->
+    <div class="row mt-3">
+      {% for x in products %}
+      <!--cards-->
+      <div class="col-md-4">
+        <div class="card" style="width:100%;">
+          <img src="{{ x.pimage.url }}" height="150px" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ x.name }}</h5>
+            <p class="card-text">Rs.{{ x.price }}</p>
+            <h5 class="card-title">{{ x.gender }}</h5>
+            <p class="card-text">{{ x.type }}</p>
+            <h5 class="card-title">{{ x.age }}</h5>
+            <p class="card-text">{{ x.description }}</p>
+            {% if x.cat == 1 %}
+            <p class="card-text">Cat</p>
+            {% elif x.cat == 2 %}
+            <p class="card-text">Dog</p>
+            {% else %}
+            <p class="card-text">Unknown Category</p>
+            {% endif %}
+            <a href="/Pet_details/{{ x.id }}" class="btn btn-primary">See details</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+
+      
+    <!-- Services Start -->
+    <div class="container-fluid bg-light pt-5">
+      <div class="container py-5">
+          <div class="d-flex flex-column text-center mb-5">
+              <h4 class="text-secondary mb-3">Our Services</h4>
+              <h1 class="display-4 m-0"><span class="text-primary">Premium</span> Pet Services</h1>
+          </div>
+          <div class="row pb-3">
+              <div class="col-md-6 col-lg-4 mb-4">
+                  <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                      <h3 class="flaticon-house display-3 font-weight-normal text-secondary mb-3"></h3>
+                      <h3 class="mb-3">Pet Boarding</h3>
+                      <p>Book a Dog Hostel and Dog Boarding in India at Best Prices on  Pet club, Whether You live in Rajasthan, Delhi, Punjab, Uttar Pradesh, Gujarat, Maharastra, Telangana, Book a Dog Boarding Service near you.</p>
+                      <a class="text-uppercase font-weight-bold" href="/services/">Read More</a>
+                  </div>
+              </div>
+              <div class="col-md-6 col-lg-4 mb-4">
+                  <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                      <h3 class="flaticon-food display-3 font-weight-normal text-secondary mb-3"></h3>
+                      <h3 class="mb-3">Pet Feeding</h3>
+                      <p> Remember that each dogs is different. As a general guide we advise offering the daily amount of food recommended for the ideal bodyweight of your dog in the feeding guide on the pack</p>
+                      <a class="text-uppercase font-weight-bold" href="/services/">Read More</a>
+                  </div>
+              </div>
+              <div class="col-md-6 col-lg-4 mb-4">
+                  <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                      <h3 class="flaticon-grooming display-3 font-weight-normal text-secondary mb-3"></h3>
+                      <h3 class="mb-3">Pet Grooming</h3>
+                      <p>Book professional dog groomers online and get them at your doorstep. Choose from various dog grooming packages like bathing, cutting, tick removal, and more</p>
+                      <a class="text-uppercase font-weight-bold" href="/services/">Read More</a>
+                  </div>
+              </div>
+              <div class="col-md-6 col-lg-4 mb-4">
+                  <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                      <h3 class="flaticon-cat display-3 font-weight-normal text-secondary mb-3"></h3>
+                      <h3 class="mb-3">Per Training</h3>
+                      <p>How to Train a Dog: Essential Steps for Effective Obedience</p>
+                      <a class="text-uppercase font-weight-bold" href="/services/">Read More</a>
+                  </div>
+              </div>
+              <div class="col-md-6 col-lg-4 mb-4">
+                  <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                      <h3 class="flaticon-dog display-3 font-weight-normal text-secondary mb-3"></h3>
+                      <h3 class="mb-3">Pet Exercise</h3>
+                      <p>In this collection you will find a variety of items related to dog fitness and rehabilitation</p>
+                      <a class="text-uppercase font-weight-bold" href="/services/">Read More</a>
+                      
+                  </div>
+              </div>
+              <div class="col-md-6 col-lg-4 mb-4">
+                  <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                      <h3 class="flaticon-vaccine display-3 font-weight-normal text-secondary mb-3"></h3>
+                      <h3 class="mb-3">Pet Treatment</h3>
+                      <p>Never give your dog medication that has not been prescribed by a veterinarian.</p>
+                      <a class="text-uppercase font-weight-bold" href="/services/">Read More</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Services End -->
+
+     
+  <div class="row mt-3">
+    
+      
+    
+      <!-- col 1/filter section -->
+      <div class="col-md-4 bg-light">
+        <h5>Filter By Category</h5>
+        <hr>
+        <p><a href="/catfilter/1" class="anchor">Cat</a></p>
+        <p><a href="/catfilter/2" class="anchor">Dog</a></p><br><br><br>  
+
+ 
+        {% endblock 'main' %}
+
+

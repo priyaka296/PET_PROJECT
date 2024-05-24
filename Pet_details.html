@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+{% load static %}
+
+<!--start Main section-->
+<div class="row mt-5 mx-auto">
+  {% for x in products %}
+    <div class="col-md-6 mt-5">
+      <img src="{{x.pimage.url}}" width="100%" height="350px;">
+    </div>
+    <div class="col-md-6 mt-5">
+      <p><b>Pet Name:</b>&nbsp;&nbsp;&nbsp;{{x.name}}</p>
+      <p><b>Price:</b>&nbsp;&nbsp;&nbsp;Rs. {{x.price}}</p>
+      <p><b>Category:</b>&nbsp;&nbsp;&nbsp;{{x.cat}}</p>
+      <p><b>Pet Details:</b>&nbsp;&nbsp;&nbsp;{{x.Pet_details}}</p>
+      
+      <br>
+      <a href="/addtocart/{{x.id}}" class="btn btn-primary">Add to cart</a>&nbsp;&nbsp;
+
+      <a href="/viewcart/" class="btn btn-primary">View cart</a>&nbsp;&nbsp;
+      <a href="/index/" class="btn btn-primary">Shop More</a>
+    </div>
+    {% if success %}
+                    <div class="alert alert-success mt-5">
+                        {{success}}
+                    </div>
+                    {% endif %}
+
+                    {% if msg %}
+                    <div class="alert alert-danger mt-5">
+                        {{msg}}
+                    </div>
+                    {% endif %}
+                    
+    {% endfor %}
+
+    
+  </div>
+  <!--End Main section-->
+
+{% endblock 'main' %}
+
+
